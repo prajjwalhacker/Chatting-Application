@@ -8,7 +8,7 @@ app = express();
 app.use(express.static("public"));
 const users = {};
 
-server  = app.listen(8000, function(){
+server  = app.listen(process.env.PORT, function(){
     console.log("server started");
 });
 
@@ -38,7 +38,7 @@ io.on('connection', function(socket){
         fetch(url)
              .then(result => {return result.json()})
              .then(function(data){
-                  console.log(data.results[0].formatted);
+                data.results[0].formatted;
             });
        });
 });
