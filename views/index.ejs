@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.1/socket.io.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        img {
+            display: block;
+            margin: auto;
+            height: 70px;
+            width: 70px;
+        }
+
+        .container {
+            height: 400px;
+            width: 600px;
+            background-color: aquamarine;
+            display: block;
+            margin: auto;
+            border: 3px solid blueviolet;
+            border-radius: 10px;
+            overflow: scroll;
+        }
+
+        .message {
+            background-color: burlywood;
+            width: 200px;
+            margin: 10px;
+            border: 2px solid black;
+            border-radius: 6px;
+            padding: 5px;
+        }
+
+        .right {
+            float: right;
+            clear: both;
+        }
+
+        .left {
+            float: left;
+            clear: both;
+        }
+
+        .send {
+            width: 500px;
+            text-align: center;
+            display: block;
+            margin: auto;
+        }
+
+        #messageInp {
+            float: left;
+            width: 443px;
+            height: 30px;
+            border-radius: 5px;
+            border: 2px solid blueviolet;
+        }
+
+        .btn {
+            float: left;
+            height: 35px;
+        }
+        
+        img{
+            border-radius: 5px;
+        }
+        .navbar{
+            background-color: lightblue;
+            border: 3px solid black;
+            border-radius: 10px;
+        }
+        .navbar ul{
+            overflow: auto;
+        }
+        .navbar li{
+            float : left;
+            list-style: none;
+        }
+        .navbar li a{
+            padding : 3px 5px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <ul>
+
+                <li><a href = "/chat">Chatting App</a></li>
+                <li><a href = "#">Voice Call App</a></li>
+                <li><a href = "#">Video Call App</a></li>
+                <li><a href = "/live" target="_blank" rel="noopener noreferrer">Live Visitors</a></li>
+            </ul>
+        </nav>
+    </header>
+    <nav>
+        <img src="chat.jpg" alt="">
+    </nav>
+    <div class="container">
+
+    </div>
+    <div class="send">
+        <form action="#" id="send-container">
+            <input type="text" id="messageInp" name="messageInp">
+            <button class="btn" type="submit">Send</button>
+        </form>
+    </div>
+    <script src="client.js"></script>
+</body>
+
+</html>

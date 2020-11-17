@@ -1,5 +1,4 @@
-const socket = io.connect('http://localhost:8000');
-
+const socket = io.connect('https://stark-reaches-42716.herokuapp.com');
 
 
 const name = prompt("Enter your name to join");
@@ -23,6 +22,10 @@ const append = function(message,position){
 
 socket.emit('new-user-joined', name);
 
+
+socket.on('dis-user', function(data){
+    append(`${data} leave the chat` , "left");
+});
 
 
 socket.on('user-joined', function(data){ 
@@ -71,4 +74,7 @@ if (navigator.geolocation) {
      alert("Geocoder failed.");
  }
 
+
+
+//console.log("hello lala");
  

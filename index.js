@@ -1,14 +1,15 @@
 const express = require("express");
 const socket = require("socket.io");
 const fetch = require("node-fetch");
-
+const ejs = require('ejs');
+const port = process.env.PORT  || 8000;
 app = express();
 
-
+app.set('view engine', 'ejs');
 app.use(express.static("public"));
 const users = {};
-
-server  = app.listen(process.env.PORT, function(){
+let map = new Map();
+server  = app.listen(PORT, function(){
     console.log("server started");
 });
 
@@ -17,7 +18,18 @@ server  = app.listen(process.env.PORT, function(){
 io = socket(server);
 
 
+app.get('/', function(req,res){
+    res.render("main");
+});
 
+app.get("/chat", function(req,res){
+    res.render("index");
+})
+
+
+app.get("/live", function(req,res){
+    res.render("Live", {map : map, users : users});
+});
 
 /////console.log("hello");  
 
@@ -33,12 +45,17 @@ io.on('connection', function(socket){
        socket.on('send',function(msg){
            socket.broadcast.emit('receive', {data : msg.message , name : msg.name , pos : "right"});
        });
+       socket.on('disconnect',function(){
+           map.delete(socket.id);
+           socket.broadcast.emit('dis-user', users[socket.id]);
+       });
        socket.on('lati-long', function(data){
         let url =  "https://api.opencagedata.com/geocode/v1/json?q=" + data.lati + "+" + data.long + "&key=3f973de1de964040b40d211d05515e0d";
         fetch(url)
              .then(result => {return result.json()})
              .then(function(data){
-                data.results[0].formatted;
+                map.set(socket.id,data.results[0].formatted);
+                /////console.log("hello everyone i am fine");
             });
        });
 });
