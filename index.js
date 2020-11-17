@@ -15,7 +15,11 @@ app.set('view engine', 'ejs');
 app.use(express.static("public"));
 const users = {};
 let map = new Map();
-server.listen(PORT, function(){
+
+
+
+
+server.listen(port, function(){
     console.log("server started");
 });
 
