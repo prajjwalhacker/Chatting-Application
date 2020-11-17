@@ -1,4 +1,4 @@
-const socket = io.connect('https://stark-reaches-42716.herokuapp.com');
+const socket = io.connect('/');
 
 
 const name = prompt("Enter your name to join");
