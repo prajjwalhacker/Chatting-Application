@@ -1,4 +1,4 @@
-const socket = io.connect('/');
+var socket = io();
 
 
 const name = prompt("Enter your name to join");

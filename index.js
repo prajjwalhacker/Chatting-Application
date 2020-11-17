@@ -1,21 +1,24 @@
-const express = require("express");
-const socket = require("socket.io");
 const fetch = require("node-fetch");
 const ejs = require('ejs');
-const port = process.env.PORT  || 8000;
-app = express();
+const http = require('http');
+const express = require('express');
+const socketIO = require('socket.io');
+
+
+var app = express();
+var server = http.createServer(app);
+var io = socketIO(server);
+const port = process.env.PORT || 3000;
+
 
 app.set('view engine', 'ejs');
 app.use(express.static("public"));
 const users = {};
 let map = new Map();
-server  = app.listen(PORT, function(){
+server.listen(PORT, function(){
     console.log("server started");
 });
 
-
-
-io = socket(server);
 
 
 app.get('/', function(req,res){
