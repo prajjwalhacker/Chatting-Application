@@ -5,9 +5,9 @@ const name = prompt("Enter your name to join");
 
 const form = document.getElementById('send-container');
 const messageInput = document.getElementById('messageInp');
-const messageContainer = document.querySelector('.container');
+const messageContainer = document.querySelector('.containerr');
 
-const bttn = document.querySelector('.btn');
+const bttn = document.querySelector('.btnn');
 
 
 
@@ -35,6 +35,7 @@ socket.on('user-joined', function(data){
 
 
 form.addEventListener('submit', function(e){
+     ////console.log("hhello lala");
      e.preventDefault();
      const message = messageInput.value;
      append(`You: ${message}`, "left");
